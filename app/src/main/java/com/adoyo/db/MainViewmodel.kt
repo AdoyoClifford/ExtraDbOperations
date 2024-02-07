@@ -9,7 +9,9 @@ import com.adoyo.db.models.Teacher
 import io.realm.kotlin.UpdatePolicy
 import io.realm.kotlin.ext.query
 import io.realm.kotlin.ext.realmListOf
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 class MainViewmodel : ViewModel() {
@@ -21,7 +23,7 @@ class MainViewmodel : ViewModel() {
         .asFlow()
         .map { Result ->
             Result.list.toList()
-        }
+        }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(500), emptyList())
 
     private fun createSampleEntries() {
         viewModelScope.launch {
