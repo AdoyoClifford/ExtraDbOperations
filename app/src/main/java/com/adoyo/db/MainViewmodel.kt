@@ -60,14 +60,14 @@ class MainViewmodel : ViewModel() {
         viewModelScope.launch {
             realm.write {
                 val address1 = Address().apply {
-                    fullName = "John Doe"
+                    fullNAme = "John Doe"
                     street = "Main Street"
                     houseNumber = 1
                     zip = 12345
                     city = "New York"
                 }
                 val address2 = Address().apply {
-                    fullName = "Jane Doe"
+                    fullNAme = "Jane Doe"
                     street = "Main Street"
                     houseNumber = 2
                     zip = 12345

@@ -69,4 +69,5 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     implementation("io.realm.kotlin:library-base:1.11.0")
+    implementation("io.insert-koin:koin-androidx-compose:3.6.0-wasm-alpha2")
 }

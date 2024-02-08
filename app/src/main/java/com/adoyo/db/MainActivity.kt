@@ -80,7 +80,7 @@ class MainActivity : ComponentActivity() {
                                     .padding(16.dp)
                             ) {
                                 viewModel.coursedetails?.teacher?.address?.let { address ->
-                                    Text(text = address.fullName)
+                                    Text(text = address.fullNAme)
                                     Text(text = address.street + " " + address.houseNumber)
                                     Text(text = address.zip.toString() + " " + address.city)
                                 }
@@ -113,7 +113,7 @@ fun CourseItem(
         Text(text = course.name, fontWeight = FontWeight.Bold, fontSize = 20.sp)
         Spacer(modifier = Modifier.height(8.dp))
         Text(
-            text = "Course held by ${course.teacher?.address?.fullName}",
+            text = "Course held by ${course.teacher?.address?.fullNAme}",
             fontSize = 14.sp,
             fontStyle = FontStyle.Italic
         )
