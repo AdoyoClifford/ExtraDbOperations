@@ -33,25 +33,25 @@ class MainViewmodel(
 //        createSampleEntries()
 //    }
 
-    var coursedetails: Course? by mutableStateOf(null)
+    var courseDetails: Course? by mutableStateOf(null)
         private set
 
 
     fun showDialog(course: Course) {
-        coursedetails = course
+        courseDetails = course
     }
 
     fun hideDialog() {
-        coursedetails = null
+        courseDetails = null
     }
 
     fun delete() {
         viewModelScope.launch {
             realm.write {
-                val course = coursedetails?: return@write
+                val course = courseDetails?: return@write
                 val latestCourse = findLatest(course)?: return@write
                 delete(latestCourse)
-                coursedetails = null
+                courseDetails = null
 
             }
         }

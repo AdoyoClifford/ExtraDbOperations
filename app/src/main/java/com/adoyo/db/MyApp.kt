@@ -16,24 +16,7 @@ import org.koin.core.context.startKoin
 
 
 class MyApp : Application() {
-    //    companion object {
-//        lateinit var realm: Realm
-//    }
-//
-//    override fun onCreate() {
-//        super.onCreate()
-//        realm = Realm.open(
-//            configuration = RealmConfiguration.create(
-//                schema = setOf(
-//                    Address::class,
-//                    Course::class,
-//                    Student::class,
-//                    Teacher::class,
-//                )
-//
-//            )
-//        )
-//    }
+
     override fun onCreate() {
         super.onCreate()
 

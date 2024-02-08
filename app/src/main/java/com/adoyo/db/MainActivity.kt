@@ -3,7 +3,6 @@ package com.adoyo.db
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.viewModels
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -70,7 +69,7 @@ class MainActivity : ComponentActivity() {
 
                     }
 
-                    if (viewModel.coursedetails != null) {
+                    if (viewModel.courseDetails != null) {
                         Dialog(onDismissRequest = { viewModel.hideDialog() }
                         ) {
                             Column(
@@ -80,7 +79,7 @@ class MainActivity : ComponentActivity() {
                                     .background(MaterialTheme.colorScheme.surface)
                                     .padding(16.dp)
                             ) {
-                                viewModel.coursedetails?.teacher?.address?.let { address ->
+                                viewModel.courseDetails?.teacher?.address?.let { address ->
                                     Text(text = address.fullNAme)
                                     Text(text = address.street + " " + address.houseNumber)
                                     Text(text = address.zip.toString() + " " + address.city)
