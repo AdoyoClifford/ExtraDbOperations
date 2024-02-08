@@ -21,21 +21,25 @@ class MainViewmodel : ViewModel() {
     val courses = realm
         .query<Course>()
         .asFlow()
-        .map { Result ->
-            Result.list.toList()
-        }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(500), emptyList())
+        .map { result ->
+            result.list.toList()
+        }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
+
+//    init {
+//        createSampleEntries()
+//    }
 
     private fun createSampleEntries() {
         viewModelScope.launch {
             realm.write {
-                var address1 = Address().apply {
+                val address1 = Address().apply {
                     fullNAme = "John Doe"
                     street = "Main Street"
                     houseNumber = 1
                     zip = 12345
                     city = "New York"
                 }
-                var address2 = Address().apply {
+                val address2 = Address().apply {
                     fullNAme = "Jane Doe"
                     street = "Main Street"
                     houseNumber = 2
@@ -58,12 +62,12 @@ class MainViewmodel : ViewModel() {
 
                 val teacher1 = Teacher().apply {
                     address = address1
-                    course = realmListOf(course1, course2)
+                    courses = realmListOf(course1, course2)
                 }
 
                 val teacher2 = Teacher().apply {
                     address = address2
-                    course = realmListOf(course3)
+                    courses = realmListOf(course3)
                 }
 
                 course1.teacher = teacher1
