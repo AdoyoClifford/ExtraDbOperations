@@ -37,13 +37,14 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import com.adoyo.db.models.Course
 import com.adoyo.db.ui.theme.DBTheme
+import org.koin.androidx.compose.koinViewModel
 
 class MainActivity : ComponentActivity() {
-
-    private val viewModel: MainViewmodel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+            val viewModel: MainViewmodel = koinViewModel<MainViewmodel>()
+
             DBTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(

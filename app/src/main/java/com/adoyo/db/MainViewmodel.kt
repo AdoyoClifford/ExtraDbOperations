@@ -9,6 +9,7 @@ import com.adoyo.db.models.Address
 import com.adoyo.db.models.Course
 import com.adoyo.db.models.Student
 import com.adoyo.db.models.Teacher
+import io.realm.kotlin.Realm
 import io.realm.kotlin.UpdatePolicy
 import io.realm.kotlin.ext.query
 import io.realm.kotlin.ext.realmListOf
@@ -17,9 +18,9 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-class MainViewmodel : ViewModel() {
-
-    private val realm = MyApp.realm
+class MainViewmodel(
+    private val realm: Realm
+) : ViewModel() {
 
     val courses = realm
         .query<Course>()
