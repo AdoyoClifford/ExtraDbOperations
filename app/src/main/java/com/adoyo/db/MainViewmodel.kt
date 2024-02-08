@@ -1,5 +1,8 @@
 package com.adoyo.db
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.adoyo.db.models.Address
@@ -29,18 +32,42 @@ class MainViewmodel : ViewModel() {
 //        createSampleEntries()
 //    }
 
+    var coursedetails: Course? by mutableStateOf(null)
+        private set
+
+
+    fun showDialog(course: Course) {
+        coursedetails = course
+    }
+
+    fun hideDialog() {
+        coursedetails = null
+    }
+
+    fun delete() {
+        viewModelScope.launch {
+            realm.write {
+                val course = coursedetails?: return@write
+                val latestCourse = findLatest(course)?: return@write
+                delete(latestCourse)
+                coursedetails = null
+
+            }
+        }
+    }
+
     private fun createSampleEntries() {
         viewModelScope.launch {
             realm.write {
                 val address1 = Address().apply {
-                    fullNAme = "John Doe"
+                    fullName = "John Doe"
                     street = "Main Street"
                     houseNumber = 1
                     zip = 12345
                     city = "New York"
                 }
                 val address2 = Address().apply {
-                    fullNAme = "Jane Doe"
+                    fullName = "Jane Doe"
                     street = "Main Street"
                     houseNumber = 2
                     zip = 12345

@@ -6,7 +6,7 @@ import io.realm.kotlin.types.EmbeddedRealmObject
 //Teacher 1-to-many Course
 //Students many-to-many Course
 class Address: EmbeddedRealmObject {
-    var fullNAme: String = ""
+    var fullName: String = ""
     var street: String = ""
     var houseNumber: Int = 0
     var zip: Int = 0
