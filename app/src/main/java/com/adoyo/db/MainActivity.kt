@@ -62,7 +62,9 @@ class MainActivity : ComponentActivity() {
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .padding(16.dp)
-                                    .clickable { })
+                                    .clickable {
+                                        viewModel.showDialog(course)
+                                    })
                         }
 
                     }
